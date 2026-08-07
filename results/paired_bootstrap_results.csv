@@ -1,0 +1,13 @@
+quantity,estimate,ci95_low,ci95_high
+model_level_valence,0.672377,0.646481,0.696776
+model_level_arousal,0.644576,0.621426,0.666505
+model_level_dominance,0.559451,0.53166,0.585665
+model_level_mean,0.625468,0.607099,0.642981
+prediction_level_valence,0.635988,0.610266,0.660116
+prediction_level_arousal,0.604033,0.580237,0.626325
+prediction_level_dominance,0.541835,0.514881,0.567793
+prediction_level_mean,0.593952,0.575223,0.611582
+difference_valence,0.036389,0.02482,0.048296
+difference_arousal,0.040543,0.030902,0.050195
+difference_dominance,0.017616,0.007691,0.02756
+difference_mean,0.031516,0.024537,0.038731

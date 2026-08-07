@@ -1,0 +1,4 @@
+target,audio_weight,text_weight,mean_validation_ccc
+valence,0.47,0.53,0.705392
+arousal,0.9,0.1,0.642675
+dominance,0.83,0.17,0.540465

@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# MSP-Podcast download/preparation utilities
+datasets
+tqdm

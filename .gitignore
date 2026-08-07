@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local configuration
+config.sh
+config.local.sh
+.env
+
+# Datasets and raw audio
+data/
+dataset/
+datasets/
+*.wav
+*.flac
+
+# Large derived artifacts / checkpoints
+*.npy
+*.npz
+*.keras
+*.h5
+*.pt
+*.pth
+
+# Runtime outputs
+outputs/
+outputs_test2/
+logs/
+*.log
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

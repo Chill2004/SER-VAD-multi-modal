@@ -1,0 +1,7 @@
+check,status,details
+python_syntax,PASS,0 errors
+historical_server_paths,PASS,0 canonical/public hits
+obvious_secret_patterns,PASS,0 hits
+legacy_archive_removed,PASS,archive/ excluded from public package
+citation_file,PASS,CITATION.cff added
+environment_capture,PASS,utilities/capture_environment.sh added

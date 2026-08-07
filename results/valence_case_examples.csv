@@ -1,0 +1,4 @@
+source_key,transcript,reference_1to5,audio_pred_1to5,text_pred_1to5,model_level_pred_1to5
+Ses05F_impro05_F036,"So I'm just supposed to oh, well, oops, my luggage is gone and be fine with that and take your stinking fifty dollar voucher?",1.5,2.812669,1.703233,1.698887
+Ses05M_impro07_M014,"Perfect! Oh, my God. Are you staying, are you going to live on campus?",5.0,2.78481,4.893358,4.619664
+Ses05M_script01_3_M042,Annie I am going to make you a fortune.,4.0,2.055104,4.306821,4.224496

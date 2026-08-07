@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated paper."
+title: "SER VAD Model-Level Audio-Text Fusion"
+type: software
+authors:
+  - family-names: "Nguyen"
+    given-names: "The Cuong"
+  - family-names: "Huynh"
+    given-names: "Vinh Nam"
+version: 1.0.0
+date-released: 2026-08-07
+preferred-citation:
+  type: conference-paper
+  title: "A Controlled Study of Model-Level Audio-Text Fusion for Dimensional Speech Emotion Recognition"
+  authors:
+    - family-names: "Nguyen"
+      given-names: "The Cuong"
+    - family-names: "Huynh"
+      given-names: "Vinh Nam"
+  year: 2026

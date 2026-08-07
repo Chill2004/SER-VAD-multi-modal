@@ -1,0 +1,5 @@
+target,mean_ccc,sample_std_ccc
+valence,0.695478,0.04975
+arousal,0.678613,0.020548
+dominance,0.552807,0.043642
+mean,0.642299,0.017291

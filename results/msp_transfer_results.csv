@@ -1,0 +1,5 @@
+training_adaptation,test_set,valence_ccc,arousal_ccc,dominance_ccc,mean_ccc,precision
+MSP in-domain multimodal,MSP 7-10 s,0.65,0.674,0.634,0.653,paper-rounded
+IEMOCAP checkpoint,MSP 2-6 s,0.379,0.464,0.467,0.437,paper-rounded
+IEMOCAP -> MSP fine-tuning,MSP 2-6 s,0.593,0.697,0.654,0.648,paper-rounded
+MSP full training,MSP full,0.627,0.676,0.608,0.637,paper-rounded

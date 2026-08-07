@@ -1,0 +1,7 @@
+model_setting,valence_ccc,arousal_ccc,dominance_ccc,mean_ccc,precision
+Wav2Vec2-BiLSTM (base),0.552,0.546,0.539,0.546,paper-rounded
+MFCC-CNN1D (reverb),0.437,0.633,0.539,0.536,paper-rounded
+DistilBERT text,0.607,0.483,0.492,0.527,paper-rounded
+Audio model-level fusion (silence),0.578,0.645,0.553,0.592,paper-rounded
+Prediction-level fusion (3-seed mean),0.636,0.604,0.542,0.594,paper-rounded
+Model-level fusion (3-seed mean),0.672,0.645,0.559,0.625,paper-rounded

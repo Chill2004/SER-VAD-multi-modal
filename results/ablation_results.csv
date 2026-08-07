@@ -1,0 +1,6 @@
+ablation,reference,selected_variant,mean_ccc,delta,precision
+Raw-waveform input,Baseline (.407),Reverberation,0.441,0.034,paper-rounded
+Wav2Vec2 audio setting,Baseline (.546),Noise / reverberation,0.556,0.01,paper-rounded
+MFCC-39d audio setting,Baseline (.504),Reverberation,0.536,0.032,paper-rounded
+MFCC dimensionality,117d + reverberation (.521),39d + reverberation,0.536,0.015,paper-rounded
+Audio representation fusion,Best single audio branch (.556),"Wav2Vec2 + MFCC, silence removal",0.592,0.036,paper-rounded

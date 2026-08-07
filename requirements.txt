@@ -1,0 +1,11 @@
+# Core IEMOCAP preprocessing, training, LOSO, and evaluation
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+soundfile
+librosa
+tensorflow
+torch
+transformers
