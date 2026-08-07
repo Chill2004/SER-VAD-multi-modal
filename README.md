@@ -7,6 +7,8 @@ Reproducibility code for:
 **Authors:** Nguyen The Cuong and Huynh Vinh Nam  
 **Affiliation:** Department of Information and Communication Technology, University of Science and Technology of Hanoi (USTH)
 
+**Repository:** https://github.com/Chill2004/SER-VAD-multi-modal
+
 This repository contains the preprocessing, fixed Session-5 experiments, ablations,
 five-fold LOSO evaluation, cross-domain MSP-Podcast experiments, and statistical
 analyses used in the study.
@@ -106,9 +108,8 @@ the paper. Large per-utterance features and model files are intentionally omitte
 
 ## Citation
 
-A `CITATION.cff` file is included for repository citation. Update the repository
-URL and publication metadata after the public GitHub repository and final paper
-record are available.
+A `CITATION.cff` file is included for repository citation. Publication metadata
+can be updated after the final conference record is available.
 
 ## License
 
