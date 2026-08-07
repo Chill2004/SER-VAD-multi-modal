@@ -9,6 +9,8 @@ authors:
     given-names: "Vinh Nam"
 version: 1.0.0
 date-released: 2026-08-07
+repository-code: "https://github.com/Chill2004/SER-VAD-multi-modal"
+url: "https://github.com/Chill2004/SER-VAD-multi-modal"
 preferred-citation:
   type: conference-paper
   title: "A Controlled Study of Model-Level Audio-Text Fusion for Dimensional Speech Emotion Recognition"
