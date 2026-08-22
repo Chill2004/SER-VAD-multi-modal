@@ -10,16 +10,19 @@
 - [x] Audit canonical Python syntax.
 - [x] Audit direct dependencies and CLI entry points.
 - [x] Add paper-facing result CSVs.
+- [x] Add repeated-seed LOSO aggregation artifacts and commands.
 - [x] Add reproducibility and command documentation.
+- [x] Apply the local repeated-seed patch to a clean checkout.
 - [x] Remove legacy/copy/notebook code from the public package.
 - [x] Scan the public package for obvious secrets and hard-coded personal server paths.
+- [x] Create the public GitHub repository.
+- [x] Add the repository URL to `README.md`, `CITATION.cff`, and the paper.
 
-## Before making the repository public
+## Remaining before final release/submission
 
 - [ ] Run `bash utilities/capture_environment.sh` on the original training server.
 - [ ] Commit the resulting environment files.
-- [ ] Create the public GitHub repository.
-- [ ] Add the final repository URL to `README.md`, `CITATION.cff`, and the paper.
 - [ ] Select a software license if reuse/redistribution is intended.
-- [ ] Run the LOSO manifest audit once from a clean checkout.
-- [ ] Confirm the commands in `docs/command_reference.md` against the final directory layout.
+- [ ] Run the LOSO manifest audit once from that clean checkout.
+- [ ] Confirm all commands in `docs/command_reference.md` against the merged final directory layout.
+- [ ] Re-run the repository validation scan after the final files are merged.

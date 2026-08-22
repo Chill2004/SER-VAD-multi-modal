@@ -9,24 +9,31 @@ Reproducibility code for:
 
 **Repository:** https://github.com/Chill2004/SER-VAD-multi-modal
 
-This repository contains the preprocessing, fixed Session-5 experiments, ablations,
-five-fold LOSO evaluation, cross-domain MSP-Podcast experiments, and statistical
-analyses used in the study.
+This repository contains preprocessing, fixed Session-5 experiments, ablations,
+three-seed five-fold LOSO evaluation, cross-domain MSP-Podcast experiments, and
+statistical analyses used in the study.
 
 ## Main results
 
 | Evaluation | Mean CCC |
 |---|---:|
-| Five-fold IEMOCAP LOSO | **0.642 ± 0.017** |
+| Five-fold IEMOCAP LOSO, 3 seeds/fold | **0.635 ± 0.011** |
 | Fixed Session-5, model-level fusion, 3 seeds | **0.625 ± 0.017** |
 | Fixed Session-5, prediction-level fusion, 3 seeds | **0.594 ± 0.011** |
 | Model-level minus prediction-level | **0.032**, 95% CI **[0.025, 0.039]** |
 | IEMOCAP -> MSP-Podcast direct transfer | **0.437** |
 | IEMOCAP -> MSP-Podcast fine-tuning | **0.648** |
 
-For LOSO, the deviation is the **sample standard deviation across the five held-out sessions**.
-For the fixed Session-5 robustness study, the deviation is the **sample standard deviation
-across seeds 42, 123, and 2024**.
+For LOSO, each held-out session is trained with seeds `42`, `123`, and `2024`
+while keeping that fold's train/validation/test partition fixed across seeds.
+CCC is averaged across the three seeds within each held-out session first. The
+reported LOSO deviation is then the **sample standard deviation across the five
+seed-averaged held-out sessions**.
+
+For the fixed Session-5 robustness study, the deviation is the **sample standard
+deviation across seeds 42, 123, and 2024**. The model-level Session-5 LOSO row
+uses the same three model instances as the fixed Session-5 model-level robustness
+analysis; the two presentations answer different evaluation questions.
 
 ## Repository structure
 
@@ -36,8 +43,8 @@ experiments/
   fixed_session5/            branch, audio-fusion, text, and model-level experiments
   cross_domain/              MSP-Podcast in-domain, transfer, and fine-tuning experiments
 ablation/                    paper/thesis ablation entry points
-loso/                        audited five-fold leave-one-session-out pipeline
-evaluation/                  LOSO summary, prediction fusion, bootstrap, case analysis
+loso/                        audited leave-one-session-out pipeline and seed runners
+evaluation/                  LOSO aggregation, prediction fusion, bootstrap, case analysis
 results/                     lightweight paper-facing CSV results
 utilities/                   supporting visualization/recovery scripts
 docs/                        reproducibility, commands, dependencies, result traceability
@@ -99,12 +106,15 @@ Dataset and output locations are controlled through `SER_DATA_ROOT` and
 The exact package-version lock from the original training server is not included
 yet. The repository therefore keeps dependency files unpinned rather than
 inventing versions. See [`environment/README.md`](environment/README.md) for the
-commands used to capture the original Python/CUDA environment before release.
+commands used to capture the original Python/CUDA environment before final
+release.
 
 ## Results
 
 `results/` contains small CSV artifacts corresponding to the values reported in
-the paper. Large per-utterance features and model files are intentionally omitted.
+the paper, including the 15-run repeated-seed LOSO matrix and its fold-level
+aggregation. Large per-utterance features and model files are intentionally
+omitted.
 
 ## Citation
 

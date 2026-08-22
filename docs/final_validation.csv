@@ -1,7 +1,13 @@
 check,status,details
-python_syntax,PASS,0 errors
-historical_server_paths,PASS,0 canonical/public hits
-obvious_secret_patterns,PASS,0 hits
+python_syntax,PASS,0 errors in existing canonical public audit
+historical_server_paths,PASS,0 canonical/public hits in existing public audit
+obvious_secret_patterns,PASS,0 hits in existing public audit
 legacy_archive_removed,PASS,archive/ excluded from public package
-citation_file,PASS,CITATION.cff added
-environment_capture,PASS,utilities/capture_environment.sh added
+citation_file,PASS,CITATION.cff present with repository URL
+environment_capture,PENDING,capture exact original training environment before final release
+repeated_seed_loso_matrix,PASS,15 fold/seed rows represented: 5 folds x 3 seeds
+repeated_seed_aggregation,PASS,"seeds averaged within fold, ddof=1 across 5 seed-averaged folds"
+loso_headline_consistency,PASS,mean CCC 0.635016; sample SD 0.011437
+paper_table_v_consistency,PASS,paper-facing folds round to .650/.635/.623/.642/.625
+legacy_seed42_preserved,PASS,seed-42 LOSO archived under explicit seed42 filenames
+local_patch_merge,PASS,local repeated-seed patch applied to a clean checkout
