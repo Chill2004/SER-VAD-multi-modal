@@ -39,8 +39,8 @@ selection.
 
 The primary five-fold paper comparison is:
 
-- **model-level fusion: 0.635 Â± 0.011 mean CCC**;
-- **prediction-level fusion: 0.613 Â± 0.024 mean CCC**.
+- **model-level fusion: 0.635 ± 0.011 mean CCC**;
+- **prediction-level fusion: 0.613 ± 0.024 mean CCC**.
 
 These are **not** pooled 15-run standard deviations. Each standard deviation is
 computed across five seed-averaged held-out-session values.
