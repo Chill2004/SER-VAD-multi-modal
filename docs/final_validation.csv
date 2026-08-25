@@ -1,13 +1,20 @@
 check,status,details
-python_syntax,PASS,0 errors in existing canonical public audit
-historical_server_paths,PASS,0 canonical/public hits in existing public audit
-obvious_secret_patterns,PASS,0 hits in existing public audit
+python_syntax,PASS,existing canonical public audit plus prediction-level LOSO evaluator compiles
+historical_server_paths,PASS,canonical/public files use configurable roots; no original absolute server path added
+obvious_secret_patterns,PASS,0 hits in existing public audit; no secrets added by final update
 legacy_archive_removed,PASS,archive/ excluded from public package
-citation_file,PASS,CITATION.cff present with repository URL
+citation_file,PASS,CITATION.cff present with repository URL and all three paper authors
 environment_capture,PENDING,capture exact original training environment before final release
-repeated_seed_loso_matrix,PASS,15 fold/seed rows represented: 5 folds x 3 seeds
-repeated_seed_aggregation,PASS,"seeds averaged within fold, ddof=1 across 5 seed-averaged folds"
-loso_headline_consistency,PASS,mean CCC 0.635016; sample SD 0.011437
-paper_table_v_consistency,PASS,paper-facing folds round to .650/.635/.623/.642/.625
-legacy_seed42_preserved,PASS,seed-42 LOSO archived under explicit seed42 filenames
+repeated_seed_loso_matrix,PASS,15 model-level fold/seed rows represented: 5 folds x 3 seeds
+repeated_seed_aggregation,PASS,"model-level seeds averaged within fold, ddof=1 across 5 seed-averaged folds"
+loso_headline_consistency,PASS,model-level mean CCC 0.635016; sample SD 0.011437
+paper_table_v_consistency,PASS,model-level paper-facing folds round to .650/.635/.623/.642/.625
+prediction_level_loso_matrix,PASS,15 prediction-level fold/seed runs represented: 5 folds x 3 seeds
+prediction_level_alpha_search,PASS,15 fold-target selections from 101 alpha candidates each
+prediction_level_aggregation,PASS,"prediction-level seeds averaged within fold, ddof=1 across 5 seed-averaged folds"
+prediction_level_headline_consistency,PASS,prediction-level mean CCC 0.612550; sample SD 0.024444
+paper_table_v_prediction_consistency,PASS,prediction-level paper-facing folds round to .649/.605/.590/.624/.594
+model_vs_prediction_fold_means,PASS,model-level seed-averaged mean CCC is higher on all 5 held-out folds
+prediction_level_test_selection,PASS,alpha selected from validation mean across seeds; test labels not used for selection
+legacy_seed42_preserved,PASS,seed-42 model-level LOSO archived under explicit seed42 filenames
 local_patch_merge,PASS,local repeated-seed patch applied to a clean checkout

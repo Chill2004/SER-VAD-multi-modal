@@ -56,7 +56,7 @@ python evaluation/paired_bootstrap_model_vs_prediction.py \
   --seeds 42 123 2024 --n_bootstrap 10000 --bootstrap_seed 2026
 ```
 
-## Five-fold repeated-seed LOSO
+## Five-fold repeated-seed LOSO: fold manifests
 
 Create the five fold manifests once. The validation partition is fixed across
 the subsequent training seeds.
@@ -78,6 +78,8 @@ for fold in Ses01 Ses02 Ses03 Ses04 Ses05; do
 done
 ```
 
+## Five-fold repeated-seed LOSO: model-level fusion
+
 Run every fold for seeds 42, 123, and 2024 sequentially on the selected GPU:
 
 ```bash
@@ -92,14 +94,14 @@ for seed in 42 123 2024; do
 done
 ```
 
-Aggregate the 15 runs:
+Aggregate the 15 model-level runs:
 
 ```bash
 python evaluation/summarize_repeated_seed_loso.py \
   --seeds 42 123 2024
 ```
 
-Expected primary result:
+Expected model-level result:
 
 ```text
 valence   : 0.684 ± 0.045
@@ -108,8 +110,76 @@ dominance : 0.548 ± 0.034
 mean      : 0.635 ± 0.011
 ```
 
-The three seeds are averaged **within each held-out session first**. The reported
-standard deviation is then the sample SD across the five seed-averaged sessions.
+## Five-fold repeated-seed LOSO: prediction-level fusion
+
+The prediction-level evaluator expects the following output layout:
+
+```text
+$SER_OUTPUT_ROOT/LOSO_prediction_level/
+  seed_42/
+    audio/<fold experiment>/
+    text/<fold experiment>/
+  seed_123/
+    audio/<fold experiment>/
+    text/<fold experiment>/
+  seed_2024/
+    audio/<fold experiment>/
+    text/<fold experiment>/
+```
+
+Train the same fused-audio and text branches for every fold and seed:
+
+```bash
+ROOT="$SER_OUTPUT_ROOT/LOSO_prediction_level"
+
+for seed in 42 123 2024; do
+  mkdir -p "$ROOT/seed_${seed}/audio" "$ROOT/seed_${seed}/text"
+
+  for fold in Ses01 Ses02 Ses03 Ses04 Ses05; do
+    python loso/train_audio_fusion_loso_checked.py \
+      --setting silence \
+      --text_setting baseline \
+      --fold "$fold" \
+      --seed "$seed" \
+      --gpu "$SER_GPU" \
+      --output_root "$ROOT/seed_${seed}/audio"
+
+    python loso/train_text_distilbert_loso_checked.py \
+      --text_setting baseline \
+      --audio_setting silence \
+      --fold "$fold" \
+      --seed "$seed" \
+      --gpu "$SER_GPU" \
+      --output_root "$ROOT/seed_${seed}/text"
+  done
+done
+```
+
+Evaluate prediction-level fusion:
+
+```bash
+python evaluation/evaluate_prediction_level_loso_3seeds.py \
+  --root "$SER_OUTPUT_ROOT/LOSO_prediction_level"
+```
+
+For each fold and target, the evaluator searches
+`alpha_audio = 0.00, 0.01, ..., 1.00` and selects the value that maximizes
+**mean validation CCC across seeds 42, 123, and 2024**. The same selected
+fold/target weight is then applied unchanged to the test predictions of all three
+seeds. Test labels are never used for weight selection.
+
+Expected prediction-level result:
+
+```text
+valence   : 0.651 ± 0.045
+arousal   : 0.651 ± 0.041
+dominance : 0.536 ± 0.041
+mean      : 0.613 ± 0.024
+```
+
+For both fusion strategies, the three seeds are averaged **within each held-out
+session first**. The reported standard deviation is then the sample SD across the
+five seed-averaged sessions.
 
 `evaluation/summarize_model_level_loso.py --seed N` remains available as a
 single-seed diagnostic helper; its seed-42-only summary is not the final paper

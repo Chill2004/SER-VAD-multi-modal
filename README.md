@@ -4,36 +4,48 @@ Reproducibility code for:
 
 **A Controlled Study of Model-Level Audio-Text Fusion for Dimensional Speech Emotion Recognition**
 
-**Authors:** Nguyen The Cuong and Huynh Vinh Nam  
+**Authors:** Nguyen The Cuong, Huynh Vinh Nam, and Kieu Quoc Viet
+
 **Affiliation:** Department of Information and Communication Technology, University of Science and Technology of Hanoi (USTH)
 
 **Repository:** https://github.com/Chill2004/SER-VAD-multi-modal
 
 This repository contains preprocessing, fixed Session-5 experiments, ablations,
-three-seed five-fold LOSO evaluation, cross-domain MSP-Podcast experiments, and
-statistical analyses used in the study.
+three-seed five-fold LOSO evaluation for model-level and prediction-level fusion,
+cross-domain MSP-Podcast experiments, and statistical analyses used in the study.
 
 ## Main results
 
 | Evaluation | Mean CCC |
 |---|---:|
-| Five-fold IEMOCAP LOSO, 3 seeds/fold | **0.635 ± 0.011** |
+| Five-fold IEMOCAP LOSO, model-level fusion, 3 seeds/fold | **0.635 ± 0.011** |
+| Five-fold IEMOCAP LOSO, prediction-level fusion, 3 seeds/fold | **0.613 ± 0.024** |
 | Fixed Session-5, model-level fusion, 3 seeds | **0.625 ± 0.017** |
 | Fixed Session-5, prediction-level fusion, 3 seeds | **0.594 ± 0.011** |
-| Model-level minus prediction-level | **0.032**, 95% CI **[0.025, 0.039]** |
+| Fixed Session-5 model-level minus prediction-level | **0.032**, 95% CI **[0.025, 0.039]** over test-set composition |
 | IEMOCAP -> MSP-Podcast direct transfer | **0.437** |
 | IEMOCAP -> MSP-Podcast fine-tuning | **0.648** |
 
-For LOSO, each held-out session is trained with seeds `42`, `123`, and `2024`
-while keeping that fold's train/validation/test partition fixed across seeds.
-CCC is averaged across the three seeds within each held-out session first. The
-reported LOSO deviation is then the **sample standard deviation across the five
-seed-averaged held-out sessions**.
+For both five-fold LOSO fusion strategies, each held-out session is evaluated with
+seeds `42`, `123`, and `2024` while keeping that fold's
+train/validation/test partition fixed across seeds. Metrics are averaged across
+the three seeds within each held-out session first. The reported LOSO deviation
+is then the **sample standard deviation across the five seed-averaged held-out
+sessions**.
+
+For prediction-level LOSO, the audio mixing weight is selected separately for
+Valence, Arousal, and Dominance within each fold from
+`{0.00, 0.01, ..., 1.00}`. One weight per fold/target is chosen by maximizing the
+**mean validation CCC across the three seeds**, then applied unchanged to the
+three corresponding test predictions. Test labels are never used for weight
+selection. Model-level fusion has the higher seed-averaged mean CCC on all five
+held-out sessions; this does not imply that it is higher for every target on
+every fold.
 
 For the fixed Session-5 robustness study, the deviation is the **sample standard
-deviation across seeds 42, 123, and 2024**. The model-level Session-5 LOSO row
-uses the same three model instances as the fixed Session-5 model-level robustness
-analysis; the two presentations answer different evaluation questions.
+deviation across seeds 42, 123, and 2024**. The paired bootstrap interval
+quantifies test-set-composition uncertainty conditional on those trained model
+instances, not random-seed uncertainty.
 
 ## Repository structure
 
@@ -45,7 +57,7 @@ experiments/
 ablation/                    paper/thesis ablation entry points
 loso/                        audited leave-one-session-out pipeline and seed runners
 evaluation/                  LOSO aggregation, prediction fusion, bootstrap, case analysis
-results/                     lightweight paper-facing CSV results
+results/                     lightweight paper-facing CSV/JSON results
 utilities/                   supporting visualization/recovery scripts
 docs/                        reproducibility, commands, dependencies, result traceability
 environment/                 instructions for capturing the exact training environment
@@ -88,7 +100,7 @@ Then follow:
 
 - [`docs/reproducibility.md`](docs/reproducibility.md) for the complete research flow;
 - [`docs/command_reference.md`](docs/command_reference.md) for runnable commands;
-- [`docs/paper_result_traceability.md`](docs/paper_result_traceability.md) to map paper results to scripts and CSV artifacts.
+- [`docs/paper_result_traceability.md`](docs/paper_result_traceability.md) to map paper results to scripts and result artifacts.
 
 ## Data
 
@@ -99,22 +111,20 @@ and follow their respective licenses and access terms.
 
 ## Reproducibility notes
 
-The canonical code no longer depends on the original server's absolute paths.
+The canonical code does not depend on the original server's absolute paths.
 Dataset and output locations are controlled through `SER_DATA_ROOT` and
 `SER_OUTPUT_ROOT`.
 
-The exact package-version lock from the original training server is not included
-yet. The repository therefore keeps dependency files unpinned rather than
-inventing versions. See [`environment/README.md`](environment/README.md) for the
-commands used to capture the original Python/CUDA environment before final
-release.
+The exact package-version lock from the original training server should be
+captured from that machine rather than inferred from current releases. See
+[`environment/README.md`](environment/README.md).
 
 ## Results
 
-`results/` contains small CSV artifacts corresponding to the values reported in
-the paper, including the 15-run repeated-seed LOSO matrix and its fold-level
-aggregation. Large per-utterance features and model files are intentionally
-omitted.
+`results/` contains small paper-facing artifacts for the repeated-seed model-level
+LOSO and prediction-level LOSO comparisons, fixed Session-5 robustness,
+bootstrap analysis, ablations, and MSP transfer. Large per-utterance features,
+predictions, and model files are intentionally omitted.
 
 ## Citation
 

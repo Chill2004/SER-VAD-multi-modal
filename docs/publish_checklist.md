@@ -10,19 +10,22 @@
 - [x] Audit canonical Python syntax.
 - [x] Audit direct dependencies and CLI entry points.
 - [x] Add paper-facing result CSVs.
-- [x] Add repeated-seed LOSO aggregation artifacts and commands.
-- [x] Add reproducibility and command documentation.
+- [x] Add three-seed model-level LOSO aggregation artifacts and commands.
+- [x] Add full five-fold prediction-level LOSO evaluator and paper-facing artifacts.
+- [x] Document fold-specific validation selection for prediction-level alpha.
+- [x] Add reproducibility and command documentation for both LOSO fusion strategies.
 - [x] Apply the local repeated-seed patch to a clean checkout.
 - [x] Remove legacy/copy/notebook code from the public package.
 - [x] Scan the public package for obvious secrets and hard-coded personal server paths.
 - [x] Create the public GitHub repository.
 - [x] Add the repository URL to `README.md`, `CITATION.cff`, and the paper.
+- [x] Synchronize README/CITATION author metadata with all three paper authors.
 
 ## Remaining before final release/submission
 
 - [ ] Run `bash utilities/capture_environment.sh` on the original training server.
 - [ ] Commit the resulting environment files.
 - [ ] Select a software license if reuse/redistribution is intended.
-- [ ] Run the LOSO manifest audit once from that clean checkout.
+- [ ] Run the LOSO manifest audit once from the clean final checkout.
 - [ ] Confirm all commands in `docs/command_reference.md` against the merged final directory layout.
 - [ ] Re-run the repository validation scan after the final files are merged.

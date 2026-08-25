@@ -7,6 +7,8 @@ authors:
     given-names: "The Cuong"
   - family-names: "Huynh"
     given-names: "Vinh Nam"
+  - family-names: "Kieu"
+    given-names: "Quoc Viet"
 version: 1.0.0
 date-released: 2026-08-07
 repository-code: "https://github.com/Chill2004/SER-VAD-multi-modal"
@@ -19,4 +21,6 @@ preferred-citation:
       given-names: "The Cuong"
     - family-names: "Huynh"
       given-names: "Vinh Nam"
+    - family-names: "Kieu"
+      given-names: "Quoc Viet"
   year: 2026
