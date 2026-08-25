@@ -4,7 +4,7 @@ historical_server_paths,PASS,canonical/public files use configurable roots; no o
 obvious_secret_patterns,PASS,0 hits in existing public audit; no secrets added by final update
 legacy_archive_removed,PASS,archive/ excluded from public package
 citation_file,PASS,CITATION.cff present with repository URL and all three paper authors
-environment_capture,PENDING,capture exact original training environment before final release
+environment_capture,NOT_REQUIRED,portable public release uses configurable SER_DATA_ROOT and SER_OUTPUT_ROOT; exact training-server environment lock is not part of this release
 repeated_seed_loso_matrix,PASS,15 model-level fold/seed rows represented: 5 folds x 3 seeds
 repeated_seed_aggregation,PASS,"model-level seeds averaged within fold, ddof=1 across 5 seed-averaged folds"
 loso_headline_consistency,PASS,model-level mean CCC 0.635016; sample SD 0.011437

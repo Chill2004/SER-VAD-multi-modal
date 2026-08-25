@@ -20,11 +20,10 @@
 - [x] Create the public GitHub repository.
 - [x] Add the repository URL to `README.md`, `CITATION.cff`, and the paper.
 - [x] Synchronize README/CITATION author metadata with all three paper authors.
+- [x] Keep the public release portable through SER_DATA_ROOT and SER_OUTPUT_ROOT; an exact training-server environment lock is outside the scope of this release.
 
 ## Remaining before final release/submission
 
-- [ ] Run `bash utilities/capture_environment.sh` on the original training server.
-- [ ] Commit the resulting environment files.
 - [ ] Select a software license if reuse/redistribution is intended.
 - [ ] Run the LOSO manifest audit once from the clean final checkout.
 - [ ] Confirm all commands in `docs/command_reference.md` against the merged final directory layout.

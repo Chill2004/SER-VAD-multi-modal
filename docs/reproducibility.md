@@ -1,15 +1,8 @@
 # Reproducibility flow
 
-## Step 0: capture/configure the environment
+## Step 0: configure the environment
 
-For publication, first capture the exact original training environment on the
-server used for the reported experiments:
-
-```bash
-bash utilities/capture_environment.sh
-```
-
-For a new machine, configure paths:
+Configure dataset, output, and GPU paths for the current machine:
 
 ```bash
 cp config.example.sh config.sh
@@ -46,8 +39,8 @@ selection.
 
 The primary five-fold paper comparison is:
 
-- **model-level fusion: 0.635 ± 0.011 mean CCC**;
-- **prediction-level fusion: 0.613 ± 0.024 mean CCC**.
+- **model-level fusion: 0.635 Â± 0.011 mean CCC**;
+- **prediction-level fusion: 0.613 Â± 0.024 mean CCC**.
 
 These are **not** pooled 15-run standard deviations. Each standard deviation is
 computed across five seed-averaged held-out-session values.
@@ -67,6 +60,6 @@ from the repository.
 
 ## Environment reproducibility
 
-`requirements.txt` lists direct core dependencies, but the exact original version
-lock must be captured from the machine used for the reported experiments rather
-than inferred from current releases. See `environment/README.md`.
+`requirements.txt` lists the direct core dependencies. The public release is
+configured through SER_DATA_ROOT and SER_OUTPUT_ROOT and does not include an
+exact lock of the original training-server environment.

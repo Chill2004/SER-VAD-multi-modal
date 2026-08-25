@@ -115,9 +115,10 @@ The canonical code does not depend on the original server's absolute paths.
 Dataset and output locations are controlled through `SER_DATA_ROOT` and
 `SER_OUTPUT_ROOT`.
 
-The exact package-version lock from the original training server should be
-captured from that machine rather than inferred from current releases. See
-[`environment/README.md`](environment/README.md).
+The public release focuses on portable code, documented protocols, and
+paper-facing result artifacts. Dataset and output paths are configured through
+SER_DATA_ROOT and SER_OUTPUT_ROOT; an exact training-server environment lock is
+not part of this release.
 
 ## Results
 
