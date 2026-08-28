@@ -10,8 +10,9 @@ cp config.example.sh config.sh
 source config.sh
 ```
 
-`SER_GPU` provides the default GPU index for scripts that do not receive
-`--gpu` directly. Scripts exposing `--gpu` can override it.
+`SER_GPU` is used by the provided LOSO shell runners and command examples.
+Scripts exposing `--gpu` can override it explicitly. Feature-extraction scripts
+may use their own device-selection logic.
 
 ## IEMOCAP preprocessing
 
@@ -198,5 +199,4 @@ Install the extras first:
 pip install -r requirements-cross-domain.txt
 ```
 
-The MSP scripts are grouped by protocol under `experiments/cross_domain/`. Their
-CLI surface is listed in `docs/cli_audit.csv`.
+The MSP scripts are grouped by protocol under `experiments/cross_domain/`.

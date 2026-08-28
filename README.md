@@ -60,7 +60,7 @@ evaluation/                  LOSO aggregation, prediction fusion, bootstrap, cas
 results/                     lightweight paper-facing CSV/JSON results
 utilities/                   supporting visualization/recovery scripts
 docs/                        reproducibility, commands, dependencies, result traceability
-environment/                 instructions for capturing the exact training environment
+environment/                 optional environment metadata notes
 ```
 
 ## Model overview

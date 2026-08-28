@@ -32,19 +32,12 @@ installed CUDA/runtime stack.
 
 ## Version policy
 
-The exact `pip freeze` from the original training server was not present in the
-source archive. Package versions are therefore intentionally not fabricated.
+The exact package lock from the original training server is not part of this
+public release. Package versions are intentionally not fabricated.
 
-Before the repository is published, capture the original environment:
+The release instead focuses on portable code, documented evaluation protocols,
+paper-facing result artifacts, and configurable dataset/output roots.
 
-```bash
-python --version > environment/python-version.txt
-python -m pip freeze > environment/pip-freeze.txt
-nvidia-smi > environment/nvidia-smi.txt
-```
-
-If Conda was used, also save:
-
-```bash
-conda env export --no-builds > environment/conda-environment.yml
-```
+For maintainers who want additional environment metadata,
+`utilities/capture_environment.sh` is retained as an optional helper. Its output
+is not required for the paper-facing public release.

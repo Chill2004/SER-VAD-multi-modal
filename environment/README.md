@@ -1,22 +1,13 @@
 # Training environment
 
-The exact environment should be captured from the machine used for the reported experiments.
+The public release does not require an exact lock of the original training-server
+environment.
 
-From the repository root:
+Dataset and output locations are configured through `SER_DATA_ROOT` and
+`SER_OUTPUT_ROOT`. GPU selection for the documented runners is configured through
+`SER_GPU` or an explicit `--gpu` argument where supported.
 
-```bash
-mkdir -p environment
+`utilities/capture_environment.sh` is retained only as an optional helper for
+maintainers who want to record Python, package, CUDA, and GPU metadata.
 
-python --version > environment/python-version.txt
-python -m pip freeze > environment/pip-freeze.txt
-nvidia-smi > environment/nvidia-smi.txt
-```
-
-If Conda was used:
-
-```bash
-conda env export --no-builds > environment/conda-environment.yml
-```
-
-These files should be committed once they are collected from the original server.
-Do not generate a fake lock file from a different machine.
+Generated environment-capture files are not required for the paper-facing release.

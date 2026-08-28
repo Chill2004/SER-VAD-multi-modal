@@ -26,5 +26,5 @@
 
 - [ ] Select a software license if reuse/redistribution is intended.
 - [ ] Run the LOSO manifest audit once from the clean final checkout.
-- [ ] Confirm all commands in `docs/command_reference.md` against the merged final directory layout.
-- [ ] Re-run the repository validation scan after the final files are merged.
+- [x] Confirm all commands in `docs/command_reference.md` against the merged final directory layout.
+- [x] Re-run the repository validation scan after the final files are merged.
