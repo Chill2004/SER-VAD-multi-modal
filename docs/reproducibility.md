@@ -1,5 +1,9 @@
 # Reproducibility flow
 
+The commands and results below describe the historical release. For the RIVF
+2026 camera-ready protocol and results, see [Camera-ready protocol](camera_ready_protocol.md)
+and the [result index](../results/README.md).
+
 ## Step 0: configure the environment
 
 Configure dataset, output, and GPU paths for the current machine:
@@ -37,7 +41,7 @@ The canonical pipeline is:
 Test labels are never used for checkpoint, setting, or prediction-level weight
 selection.
 
-The primary five-fold paper comparison is:
+The historical five-fold comparison is:
 
 - **model-level fusion: 0.635 ± 0.011 mean CCC**;
 - **prediction-level fusion: 0.613 ± 0.024 mean CCC**.

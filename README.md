@@ -6,46 +6,47 @@ Reproducibility code for:
 
 **Authors:** Nguyen The Cuong, Huynh Vinh Nam, and Kieu Quoc Viet
 
-**Affiliation:** Department of Information and Communication Technology, University of Science and Technology of Hanoi (USTH)
+**Affiliation:** Department of Information and Communication Technology, University of Science and Technology of Hanoi, Vietnam Academy of Science and Technology, 18 Hoang Quoc Viet, Nghia Do, Hanoi, Vietnam
 
 **Repository:** https://github.com/Chill2004/SER-VAD-multi-modal
 
-This repository contains preprocessing, fixed Session-5 experiments, ablations,
-three-seed five-fold LOSO evaluation for model-level and prediction-level fusion,
-cross-domain MSP-Podcast experiments, and statistical analyses used in the study.
+This repository contains preprocessing and evaluation code, historical
+experiments, and result tables for the RIVF 2026 camera-ready paper.
 
-## Main results
+## Camera-ready results
 
-| Evaluation | Mean CCC |
-|---|---:|
-| Five-fold IEMOCAP LOSO, model-level fusion, 3 seeds/fold | **0.635 ± 0.011** |
-| Five-fold IEMOCAP LOSO, prediction-level fusion, 3 seeds/fold | **0.613 ± 0.024** |
-| Fixed Session-5, model-level fusion, 3 seeds | **0.625 ± 0.017** |
-| Fixed Session-5, prediction-level fusion, 3 seeds | **0.594 ± 0.011** |
-| Fixed Session-5 model-level minus prediction-level | **0.032**, 95% CI **[0.025, 0.039]** over test-set composition |
-| IEMOCAP -> MSP-Podcast direct transfer | **0.437** |
-| IEMOCAP -> MSP-Podcast fine-tuning | **0.648** |
+The primary IEMOCAP experiment holds out one full session for testing and one
+other full session for validation in each fold. It uses seeds `42`, `123`,
+and `2024`. Mean CCC and sample SD are computed across the five fold means,
+after averaging the three seeds within each fold.
 
-For both five-fold LOSO fusion strategies, each held-out session is evaluated with
-seeds `42`, `123`, and `2024` while keeping that fold's
-train/validation/test partition fixed across seeds. Metrics are averaged across
-the three seeds within each held-out session first. The reported LOSO deviation
-is then the **sample standard deviation across the five seed-averaged held-out
-sessions**.
+| Method | Valence CCC | Arousal CCC | Dominance CCC | Mean CCC ± SD |
+|---|---:|---:|---:|---:|
+| Audio only | 0.493 | 0.642 | 0.517 | 0.551 ± 0.042 |
+| Text only | 0.610 | 0.465 | 0.444 | 0.506 ± 0.034 |
+| Scalar prediction fusion | 0.628 | 0.643 | 0.527 | 0.599 ± 0.022 |
+| Linear combiner | 0.597 | 0.612 | 0.468 | 0.559 ± 0.026 |
+| Model-level fusion | **0.657** | **0.661** | **0.540** | **0.619 ± 0.016** |
 
-For prediction-level LOSO, the audio mixing weight is selected separately for
-Valence, Arousal, and Dominance within each fold from
-`{0.00, 0.01, ..., 1.00}`. One weight per fold/target is chosen by maximizing the
-**mean validation CCC across the three seeds**, then applied unchanged to the
-three corresponding test predictions. Test labels are never used for weight
-selection. Model-level fusion has the higher seed-averaged mean CCC on all five
-held-out sessions; this does not imply that it is higher for every target on
-every fold.
+- **Primary LOSO.** The paired mean CCC gain from model-level over scalar
+  fusion is **0.020** (dialogue-clustered 95% CI **[0.014, 0.027]**).
+- **Fixed Session 5.** Mean CCC is 0.625 for model-level fusion and 0.594 for
+  scalar fusion. The paired gain is 0.0315 (dialogue-clustered 95% CI
+  [0.0159, 0.0450]). Both intervals are conditional on the trained models
+  and observed sessions.
+- **Lightweight MFCC ablation.** Retaining MFCCs raises mean CCC from 0.4396
+  to 0.5359 in the matched audio-only configuration.
+- **Fixed-silence transcript diagnostics.** Across 15 checkpoints, mean CCC
+  is 0.6350 with reference transcripts, 0.4494 after shuffling, and 0.5780
+  with ASR transcripts. Pooled WER is 30.05%.
+- **MSP-Podcast.** On the historical 2–6 s test, fine-tuning raises mean CCC
+  from 0.437 to 0.648. On the new 2–6 s split (seed 42, 2,170 test samples),
+  mean CCC is 0.5169 for audio only, 0.2799 for text only, and 0.5615 for
+  scalar fusion. The new split has no completed model-level comparison.
 
-For the fixed Session-5 robustness study, the deviation is the **sample standard
-deviation across seeds 42, 123, and 2024**. The paired bootstrap interval
-quantifies test-set-composition uncertainty conditional on those trained model
-instances, not random-seed uncertainty.
+See [the result index](results/README.md) for camera-ready CSVs and historical
+artifacts, and [the protocol notes](docs/camera_ready_protocol.md) for the
+evaluation settings and available reproduction commands.
 
 ## Repository structure
 
@@ -98,9 +99,10 @@ python -m pip install -r requirements-cross-domain.txt
 
 Then follow:
 
-- [`docs/reproducibility.md`](docs/reproducibility.md) for the complete research flow;
-- [`docs/command_reference.md`](docs/command_reference.md) for runnable commands;
-- [`docs/paper_result_traceability.md`](docs/paper_result_traceability.md) to map paper results to scripts and result artifacts.
+- [Camera-ready protocol](docs/camera_ready_protocol.md) for the primary comparison,
+  fixed-Session-5 dialogue bootstrap, and new MSP baselines.
+- [Result traceability](docs/paper_result_traceability.md) for the result-to-code map.
+- [Historical commands](docs/command_reference.md) for earlier experiments.
 
 ## Data
 
@@ -111,21 +113,10 @@ and follow their respective licenses and access terms.
 
 ## Reproducibility notes
 
-The canonical code does not depend on the original server's absolute paths.
-Dataset and output locations are controlled through `SER_DATA_ROOT` and
-`SER_OUTPUT_ROOT`.
-
-The public release focuses on portable code, documented protocols, and
-paper-facing result artifacts. Dataset and output paths are configured through
-SER_DATA_ROOT and SER_OUTPUT_ROOT; an exact training-server environment lock is
-not part of this release.
-
-## Results
-
-`results/` contains small paper-facing artifacts for the repeated-seed model-level
-LOSO and prediction-level LOSO comparisons, fixed Session-5 robustness,
-bootstrap analysis, ablations, and MSP transfer. Large per-utterance features,
-predictions, and model files are intentionally omitted.
+The historical trainers use `SER_DATA_ROOT` and `SER_OUTPUT_ROOT` for dataset
+and output paths. The camera-ready entry points published here accept explicit
+paths. See the protocol notes for the scripts and inputs needed to reproduce each
+result.
 
 ## Citation
 

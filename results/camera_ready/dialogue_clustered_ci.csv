@@ -1,0 +1,10 @@
+protocol,comparison,target,delta_ccc,ci95_low,ci95_high
+loso,model_level_minus_scalar,valence,.029,.019,.040
+loso,model_level_minus_scalar,arousal,.018,.010,.026
+loso,model_level_minus_scalar,dominance,.013,.004,.023
+loso,model_level_minus_scalar,mean,.020,.014,.027
+loso,model_level_minus_linear,mean,.060,.050,.070
+fixed_session5,model_level_minus_scalar,valence,.0364,.0235,.0496
+fixed_session5,model_level_minus_scalar,arousal,.0405,.0156,.0607
+fixed_session5,model_level_minus_scalar,dominance,.0176,-.0043,.0367
+fixed_session5,model_level_minus_scalar,mean,.0315,.0159,.0450

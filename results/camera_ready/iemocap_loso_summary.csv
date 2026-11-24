@@ -1,0 +1,6 @@
+method,valence_ccc,arousal_ccc,dominance_ccc,mean_ccc,between_fold_sd
+Audio only,.493,.642,.517,.551,.042
+Text only,.610,.465,.444,.506,.034
+Scalar fusion,.628,.643,.527,.599,.022
+Linear combiner,.597,.612,.468,.559,.026
+Model-level fusion,.657,.661,.540,.619,.016
