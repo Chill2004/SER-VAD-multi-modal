@@ -1,0 +1,4 @@
+condition,valence_ccc,arousal_ccc,dominance_ccc,mean_ccc
+Without MFCC,.4023,.4863,.4301,.4396
+With MFCC,.4653,.6330,.5094,.5359
+Paired change,+.0630,+.1467,+.0793,+.0963

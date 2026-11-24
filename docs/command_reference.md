@@ -1,5 +1,9 @@
 # Command reference
 
+The commands and results below describe the historical release. For the RIVF
+2026 camera-ready protocol and results, see [Camera-ready protocol](camera_ready_protocol.md)
+and the [result index](../results/README.md).
+
 Run commands from the repository root.
 
 ## Environment

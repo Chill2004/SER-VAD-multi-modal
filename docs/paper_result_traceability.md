@@ -1,5 +1,9 @@
 # Paper result traceability
 
+The commands and results below describe the historical release. For the RIVF
+2026 camera-ready protocol and results, see [Camera-ready protocol](camera_ready_protocol.md)
+and the [result index](../results/README.md).
+
 | Result | Code | Artifact |
 |---|---|---|
 | Branch diagnostics | `experiments/fixed_session5/` | `results/branch_diagnostic_results.csv` |
@@ -17,7 +21,7 @@
 | Prediction-level LOSO, final mean/std | `evaluation/evaluate_prediction_level_loso_3seeds.py` | `results/prediction_level_loso_mean_std_summary.csv` |
 | Historical seed-42 model-level LOSO | `evaluation/summarize_model_level_loso.py --seed 42` | `results/loso_seed42_results.csv`, `results/loso_seed42_mean_std_summary.csv` |
 | Ablation | `ablation/README.md` | `results/ablation_results.csv` |
-| Valence cases | `evaluation/select_valence_case_examples.py` | `results/valence_case_examples.csv` |
+| Valence cases | Camera-ready Table IV | `results/valence_case_examples.csv` |
 | MSP | `experiments/cross_domain/` | `results/msp_transfer_results.csv` |
 
 ## LOSO aggregation note
@@ -31,7 +35,7 @@ from validation predictions only, by maximizing mean validation CCC across the
 three seeds. The same selected alpha is then used for the three corresponding
 test predictions. Test labels are never used for selection.
 
-Final five-fold mean CCC:
+Historical five-fold mean CCC:
 
 - model-level fusion: **0.635 ± 0.011**;
 - prediction-level fusion: **0.613 ± 0.024**.

@@ -1,0 +1,4 @@
+method,valence_ccc,arousal_ccc,dominance_ccc,mean_ccc,utterances
+Audio only,.3930,.6211,.5365,.5169,2170
+Text only,.3969,.2497,.1931,.2799,2170
+Scalar prediction fusion,.5209,.6234,.5401,.5615,2170

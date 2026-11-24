@@ -1,0 +1,6 @@
+test_fold,validation_fold,train_count,validation_count,test_count,audio_setting
+Ses01,Ses02,6409,1811,1819,Silence
+Ses02,Ses03,6092,2136,1811,Reverb
+Ses03,Ses04,5800,2103,2136,Reverb
+Ses04,Ses05,5766,2170,2103,Silence
+Ses05,Ses01,6050,1819,2170,Reverb

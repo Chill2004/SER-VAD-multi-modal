@@ -2,9 +2,29 @@
 
 Paper-facing CSV/JSON artifacts.
 
-## Primary repeated-seed model-level LOSO
+## Camera-ready artifacts
 
-The final paper uses five held-out IEMOCAP sessions and three training seeds per
+| Result | File |
+|---|---|
+| IEMOCAP LOSO, five methods | [iemocap_loso_summary.csv](camera_ready/iemocap_loso_summary.csv) |
+| IEMOCAP LOSO, paired mean CCC differences by fold and seed | [iemocap_loso_paired_by_seed.csv](camera_ready/iemocap_loso_paired_by_seed.csv) |
+| IEMOCAP outer-fold assignments and waveform settings | [iemocap_loso_protocol.csv](camera_ready/iemocap_loso_protocol.csv) |
+| LOSO and fixed-Session-5 dialogue-clustered intervals | [dialogue_clustered_ci.csv](camera_ready/dialogue_clustered_ci.csv) |
+| Lightweight MFCC ablation | [mfcc_lite_ablation.csv](camera_ready/mfcc_lite_ablation.csv) |
+| Fixed-silence transcript shuffle | [g6_summary.csv](camera_ready/g6_summary.csv) |
+| Fixed-silence ASR substitution | [g9_summary.csv](camera_ready/g9_summary.csv), [wer_by_fold.csv](camera_ready/wer_by_fold.csv) |
+| New MSP 2–6 s split, seed 42 | [msp_2to6_seed42_baselines.csv](camera_ready/msp_2to6_seed42_baselines.csv) |
+| Valence cases | [valence_case_examples.csv](valence_case_examples.csv) |
+
+The LOSO, confidence interval, MFCC ablation, MSP baseline, and Valence case
+tables use the precision printed in the camera-ready paper. G6 and G9 come
+from the run summaries. The WER table records fold-level counts and model
+metadata. For the historical MSP split results, see
+[msp_transfer_results.csv](msp_transfer_results.csv).
+
+## Historical repeated-seed model-level LOSO
+
+The historical LOSO experiment uses five held-out IEMOCAP sessions and three training seeds per
 fold (`42`, `123`, `2024`). The aggregation order is:
 
 1. average the three seeds within each held-out session;
@@ -28,8 +48,7 @@ Existing model-level files:
 - `loso_seed42_results.csv`: archived single-seed LOSO fold values.
 - `loso_seed42_mean_std_summary.csv`: archived single-seed LOSO mean/std.
 
-The seed-42 archive is retained only for provenance; it is not the primary LOSO
-result reported by the final paper.
+The seed-42 archive records the historical single-seed comparison.
 
 ## Repeated-seed prediction-level LOSO
 
@@ -59,8 +78,8 @@ Prediction-level files:
 - `prediction_level_alpha_search.csv`: complete 5 × 3 × 101 validation search.
 - `prediction_level_loso_results_by_seed.csv`: fold × seed × target metrics.
 - `prediction_level_loso_seed_averaged_by_fold.csv`: three-seed fold averages
-  used for the prediction-level column in Table V.
-- `prediction_level_loso_mean_std_summary.csv`: final five-fold mean/sample SD.
+  for historical prediction-level fusion.
+- `prediction_level_loso_mean_std_summary.csv`: historical five-fold mean/sample SD.
 - `prediction_level_protocol.json`: compact machine-readable protocol record.
 
 ## Other paper-facing results

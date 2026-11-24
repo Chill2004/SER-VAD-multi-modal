@@ -3,3 +3,5 @@
 # MSP-Podcast download/preparation utilities
 datasets
 tqdm
+huggingface_hub
+pyarrow
